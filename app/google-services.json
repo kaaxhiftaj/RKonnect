@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "658178711175",
+    "firebase_url": "https://student-7eba4.firebaseio.com",
+    "project_id": "student-7eba4",
+    "storage_bucket": "student-7eba4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658178711175:android:0ac6eb543ae6acb3",
+        "android_client_info": {
+          "package_name": "com.techease.rkonnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658178711175-0fdkgchkkv04ol0kie0h0e47654u6c3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOcdKb1RY3V3NymlAmzdeLFkb1VbYnGSM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
