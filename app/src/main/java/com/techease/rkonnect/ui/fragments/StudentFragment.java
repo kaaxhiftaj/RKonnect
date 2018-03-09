@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,7 +36,7 @@ public class StudentFragment extends Fragment {
     FloatingActionButton fab;
     String strName,strFatherName,strRollNo,strAge,getBundleClassName;
     DatabaseReference databaseReference,getDatabaseReference;
-    ArrayList<StudentModel> modelArrayList;
+    List<String> modelArrayList;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,17 +47,22 @@ public class StudentFragment extends Fragment {
         getBundleClassName=getArguments().getString("class");
         swipeStack = (SwipeStack)view.findViewById(R.id.swipeStack);
         fab = (FloatingActionButton)view.findViewById(R.id.fabAddStudent);
-        modelArrayList=new ArrayList<StudentModel>();
+        modelArrayList=new ArrayList<>();
         getDatabaseReference=FirebaseDatabase.getInstance().getReference().child("Classes").child(getBundleClassName).child("Students");
         getDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
                 {
-                    StudentModel stdModel1=dataSnapshot1.getValue(StudentModel.class);
-                    modelArrayList.add(stdModel1);
-                }
 
+                    StudentModel stdModel1=dataSnapshot1.getValue(StudentModel.class);
+                    Toast.makeText(getActivity(), String.valueOf(stdModel1.getName()), Toast.LENGTH_SHORT).show();
+                   // modelArrayList.add(stdModel1.getName());
+                    modelArrayList.add("abc");
+                    modelArrayList.add("xyz");
+
+                }
+             //   swipeStack.setAdapter(new SwipeStackAdapter(modelArrayList));
             }
 
             @Override
@@ -64,8 +70,9 @@ public class StudentFragment extends Fragment {
 
             }
         });
-        adapter=new SwipeStackAdapter(getActivity(),modelArrayList);
-        swipeStack.setAdapter(adapter);
+        swipeStack.setAdapter(new SwipeStackAdapter(modelArrayList));
+//        adapter=new SwipeStackAdapter(getActivity(),modelArrayList);
+//        swipeStack.setAdapter(adapter);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
