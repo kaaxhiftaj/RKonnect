@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.techease.rkonnect.R;
+import com.techease.rkonnect.ui.Adapters.HistoryClassesAdapter;
 import com.techease.rkonnect.ui.Adapters.RecyclerviewAdapterForClasses;
 import com.techease.rkonnect.ui.Models.ClassModel;
 import com.techease.rkonnect.utils.AlertsUtils;
@@ -28,7 +29,7 @@ public class HistoryFragment extends Fragment {
 
     RecyclerView recyclerView;
     ArrayList<ClassModel> list;
-    RecyclerviewAdapterForClasses adapter;
+    HistoryClassesAdapter adapter;
     FirebaseAuth mAuth;
     private DatabaseReference mFirebaseDatabase;
     android.support.v7.app.AlertDialog alertDialog;
@@ -42,7 +43,7 @@ public class HistoryFragment extends Fragment {
         recyclerView=(RecyclerView)view.findViewById(R.id.rvHistoy);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         list = new ArrayList<>();
-        adapter = new RecyclerviewAdapterForClasses(getActivity(),list);
+        adapter = new HistoryClassesAdapter(getActivity(),list);
         if (alertDialog == null)
             alertDialog = AlertsUtils.createProgressDialog(getActivity());
         mAuth = FirebaseAuth.getInstance();
