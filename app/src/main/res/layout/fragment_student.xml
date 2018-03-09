@@ -1,22 +1,32 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.daprlabs.cardstack.SwipeFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:swipedeck="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.techease.rkonnect.ui.fragments.StudentFragment">
-    <link.fls.swipestack.SwipeStack
-        android:id="@+id/swipeStack"
+    xmlns:app="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    app:ignore="NamespaceTypo">
+
+    <com.daprlabs.cardstack.SwipeDeck
+        android:id="@+id/swipe_deck"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="32dp"/>
+        android:layout_height="480dp"
+        android:padding="20dp"
+        swipedeck:card_spacing="10dp"
+        swipedeck:max_visible="3"
+        swipedeck:render_above="true"
+        swipedeck:rotation_degrees="15" />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabAddStudent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|right"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="13dp"
         android:layout_marginEnd="19dp"
         android:clickable="true"
         app:layout_anchorGravity="bottom|right|end" />
-</RelativeLayout>
+
+</com.daprlabs.cardstack.SwipeFrameLayout>

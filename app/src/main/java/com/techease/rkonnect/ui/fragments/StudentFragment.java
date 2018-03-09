@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.daprlabs.cardstack.SwipeDeck;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,8 +32,8 @@ import link.fls.swipestack.SwipeStack;
 
 public class StudentFragment extends Fragment {
 
-    SwipeStack swipeStack;
-    SwipeStackAdapter adapter;
+
+    SwipeDeck cardStack;
     FloatingActionButton fab;
     String strName,strFatherName,strRollNo,strAge,getBundleClassName;
     DatabaseReference databaseReference,getDatabaseReference;
@@ -41,28 +42,36 @@ public class StudentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_student, container, false);
+        View view = inflater.inflate(R.layout.fragment_student, container, false);
 
         databaseReference=FirebaseDatabase.getInstance().getReference();
         getBundleClassName=getArguments().getString("class");
-        swipeStack = (SwipeStack)view.findViewById(R.id.swipeStack);
+        cardStack = (SwipeDeck) view.findViewById(R.id.swipe_deck);
         fab = (FloatingActionButton)view.findViewById(R.id.fabAddStudent);
         modelArrayList=new ArrayList<>();
+
+
+
         getDatabaseReference=FirebaseDatabase.getInstance().getReference().child("Classes").child(getBundleClassName).child("Students");
         getDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
                 for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
                 {
 
                     StudentModel stdModel1=dataSnapshot1.getValue(StudentModel.class);
+
                     Toast.makeText(getActivity(), String.valueOf(stdModel1.getName()), Toast.LENGTH_SHORT).show();
-                   // modelArrayList.add(stdModel1.getName());
-                    modelArrayList.add("abc");
-                    modelArrayList.add("xyz");
+
+                   modelArrayList.add(stdModel1.getName());
+
 
                 }
-             //   swipeStack.setAdapter(new SwipeStackAdapter(modelArrayList));
+
+                final SwipeStackAdapter adapter = new SwipeStackAdapter(modelArrayList, getActivity());
+                cardStack.setAdapter(adapter);;
+
             }
 
             @Override
@@ -70,9 +79,7 @@ public class StudentFragment extends Fragment {
 
             }
         });
-        swipeStack.setAdapter(new SwipeStackAdapter(modelArrayList));
-//        adapter=new SwipeStackAdapter(getActivity(),modelArrayList);
-//        swipeStack.setAdapter(adapter);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,7 +111,11 @@ public class StudentFragment extends Fragment {
             }
         });
 
+
+
+
         return view;
     }
+
 
 }
