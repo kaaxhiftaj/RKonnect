@@ -27,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token","");
 
-        if (token.equals("kj")) {
+        if (!token.equals("login")) {
             Window window = this.getWindow();
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -35,7 +35,6 @@ public class SplashActivity extends AppCompatActivity {
             startActivity(new Intent(SplashActivity.this, FullScreenActivity.class));
             finish();
         } else {
-
             startActivity(new Intent(SplashActivity.this , MainActivity.class));
         }
 

@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.techease.rkonnect.R;
+import com.techease.rkonnect.ui.fragments.Login;
 import com.techease.rkonnect.ui.fragments.Signup;
 
 import butterknife.ButterKnife;
@@ -31,7 +32,7 @@ public class FullScreenActivity extends AppCompatActivity {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorPrimary));
-        Fragment fragment = new Signup();
+        Fragment fragment = new Login();
         getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
 
     }
