@@ -20,10 +20,10 @@ import java.util.List;
  */
 
 public class SwipeStackAdapter  extends BaseAdapter  {
-    private List<String> mData;
+    private ArrayList<StudentModel> mData;
     Context context;
 
-    public SwipeStackAdapter( List<String> modelArrayList, Context c) {
+    public SwipeStackAdapter( ArrayList<StudentModel> modelArrayList, Context c) {
         this.mData=modelArrayList;
         this.context = context ;
     }
@@ -47,11 +47,11 @@ public class SwipeStackAdapter  extends BaseAdapter  {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_student, parent, false);
-     //   StudentModel model=mData.get(position);
+        StudentModel model=mData.get(position);
         TextView tvStdName = (TextView) convertView.findViewById(R.id.tvStudentName);
-       // TextView tvStdRollNo = (TextView) convertView.findViewById(R.id.tvRollNo);
-        tvStdName.setText(mData.get(position));
-     //   tvStdRollNo.setText(mData.get(position));
+        TextView tvStdRollNo = (TextView) convertView.findViewById(R.id.tvRollNo);
+        tvStdName.setText(model.getName());
+        tvStdRollNo.setText(model.getFatherName());
 
         return convertView;
     }

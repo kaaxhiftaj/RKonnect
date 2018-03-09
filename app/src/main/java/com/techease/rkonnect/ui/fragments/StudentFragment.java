@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,7 @@ public class StudentFragment extends Fragment {
     FloatingActionButton fab;
     String strName,strFatherName,strRollNo,strAge,getBundleClassName;
     DatabaseReference databaseReference,getDatabaseReference;
-    List<String> modelArrayList;
+    ArrayList<StudentModel> modelArrayList;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class StudentFragment extends Fragment {
 
                     Toast.makeText(getActivity(), String.valueOf(stdModel1.getName()), Toast.LENGTH_SHORT).show();
 
-                   modelArrayList.add(stdModel1.getName());
+                   modelArrayList.add(stdModel1);
 
 
                 }
@@ -79,6 +80,34 @@ public class StudentFragment extends Fragment {
 
             }
         });
+
+        cardStack.setEventCallback(new SwipeDeck.SwipeEventCallback() {
+            @Override
+            public void cardSwipedLeft(int position) {
+                Toast.makeText(getActivity(), "left", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void cardSwipedRight(int position) {
+                Toast.makeText(getActivity(), "right", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void cardsDepleted() {
+                Log.i("MainActivity", "no more cards");
+            }
+
+            @Override
+            public void cardActionDown() {
+                Toast.makeText(getActivity(), "leave", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void cardActionUp() {
+
+            }
+        });
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
