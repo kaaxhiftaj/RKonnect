@@ -1,6 +1,8 @@
 package com.techease.rkonnect.ui.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,19 +10,24 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.techease.rkonnect.R;
+import com.techease.rkonnect.ui.Models.StudentModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Adamnoor on 05-Mar-18.
  */
 
-public class SwipeStackAdapter extends BaseAdapter {
-    private List<String> mData;
+public class SwipeStackAdapter  extends BaseAdapter  {
+    private ArrayList<StudentModel> mData;
     Context context;
-    public SwipeStackAdapter(List<String> data) {
-        this.mData = data;
+
+    public SwipeStackAdapter(Context context, ArrayList<StudentModel> modelArrayList) {
+        this.mData=modelArrayList;
+        this.context=context;
     }
+
 
     @Override
     public int getCount() {
@@ -28,7 +35,7 @@ public class SwipeStackAdapter extends BaseAdapter {
     }
 
     @Override
-    public String getItem(int position) {
+    public Object getItem(int position) {
         return mData.get(position);
     }
 
@@ -38,12 +45,13 @@ public class SwipeStackAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
-         convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_student, parent, false);
-        TextView tvStudentName = (TextView) convertView.findViewById(R.id.tvStudentName);
-        TextView tvRollNo = (TextView) convertView.findViewById(R.id.tvRollNo);
-        tvStudentName.setText(mData.get(position));
-
+    public View getView(int position, View convertView, ViewGroup parent) {
+        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_student, parent, false);
+        StudentModel model=mData.get(position);
+        TextView tvStdName = (TextView) convertView.findViewById(R.id.tvStudentName);
+        TextView tvStdRollNo = (TextView) convertView.findViewById(R.id.tvRollNo);
+        tvStdName.setText(model.getName());
+        tvStdRollNo.setText(model.getRollNo());
 
         return convertView;
     }
