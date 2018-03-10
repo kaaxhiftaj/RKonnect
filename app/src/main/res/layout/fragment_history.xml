@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    tools:context="com.techease.rkonnect.ui.fragments.HistoryFragment">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30sp"
+        android:text="List of Students"
+        android:layout_gravity="center"
+        android:layout_marginLeft="1sp"
+        android:layout_marginRight="1sp"
+        android:background="@drawable/edittext_bg2"
+        android:gravity="center"/>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10sp"
+        android:id="@+id/rvHistoy"></android.support.v7.widget.RecyclerView>
+</LinearLayout>

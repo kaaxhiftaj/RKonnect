@@ -2,6 +2,7 @@ package com.techease.rkonnect.ui.fragments;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -23,28 +24,38 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.techease.rkonnect.R;
 import com.techease.rkonnect.ui.Adapters.SwipeStackAdapter;
+import com.techease.rkonnect.ui.Models.AttendenceModel;
 import com.techease.rkonnect.ui.Models.ClassModel;
 import com.techease.rkonnect.ui.Models.StudentModel;
+import com.techease.rkonnect.utils.Configuration;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import link.fls.swipestack.SwipeStack;
 
 
 public class StudentFragment extends Fragment {
-
-
     SwipeDeck cardStack;
     FloatingActionButton fab;
     String strName,strFatherName,strRollNo,strAge,getBundleClassName;
     DatabaseReference databaseReference,getDatabaseReference;
     ArrayList<StudentModel> modelArrayList;
+    String date,attendence,rollNo;
+    int status;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_student, container, false);
 
+        sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         databaseReference=FirebaseDatabase.getInstance().getReference();
         getBundleClassName=getArguments().getString("class");
         cardStack = (SwipeDeck) view.findViewById(R.id.swipe_deck);
@@ -62,8 +73,6 @@ public class StudentFragment extends Fragment {
                 {
 
                     StudentModel stdModel1=dataSnapshot1.getValue(StudentModel.class);
-
-                    Toast.makeText(getActivity(), String.valueOf(stdModel1.getName()), Toast.LENGTH_SHORT).show();
 
                    modelArrayList.add(stdModel1);
 
@@ -84,12 +93,238 @@ public class StudentFragment extends Fragment {
         cardStack.setEventCallback(new SwipeDeck.SwipeEventCallback() {
             @Override
             public void cardSwipedLeft(int position) {
-                Toast.makeText(getActivity(), "left", Toast.LENGTH_SHORT).show();
+
+                if (position==0)
+                {
+                    rollNo=sharedPreferences.getString("r1","");
+                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
+                }
+                else
+                if (position==1)
+                {
+                    rollNo=sharedPreferences.getString("r2","");
+                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
+                }
+                else
+                if (position==2)
+                {
+                    rollNo=sharedPreferences.getString("r3","");
+                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
+                }
+                else
+                if (position==3)
+                {
+                    rollNo=sharedPreferences.getString("r4","");
+                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
+                }
+                else
+                if (position==4)
+                {
+                    rollNo=sharedPreferences.getString("r5","");
+                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
+                }
+                else
+                if (position==5)
+                {
+                    rollNo=sharedPreferences.getString("r6","");
+                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
+                }
+                else
+                if (position==6)
+                {
+                    rollNo=sharedPreferences.getString("r7","");
+                }
+                else
+                if (position==7)
+                {
+                    rollNo=sharedPreferences.getString("r8","");
+                }
+                else
+                if (position==8)
+                {
+                    rollNo=sharedPreferences.getString("r9","");
+                }
+                else
+                if (position==9)
+                {
+                    rollNo=sharedPreferences.getString("r10","");
+                }
+                else
+                if (position==10)
+                {
+                    rollNo=sharedPreferences.getString("r11","");
+                }
+                else
+                if (position==11)
+                {
+                    rollNo=sharedPreferences.getString("r12","");
+                }
+                else
+                if (position==12)
+                {rollNo=sharedPreferences.getString("r13","");
+                }
+                else
+                if (position==13)
+                {
+                    rollNo=sharedPreferences.getString("r14","");
+                }
+                else
+                if (position==14)
+                {
+                    rollNo=sharedPreferences.getString("r15","");
+                }
+                else
+                if (position==15)
+                {
+                    rollNo=sharedPreferences.getString("r16","");
+                }
+                else
+                if (position==16)
+                {
+                    rollNo=sharedPreferences.getString("r17","");
+                }
+                else
+                if (position==17)
+                {
+                    rollNo=sharedPreferences.getString("r18","");
+                }
+                else
+                if (position==18)
+                {
+                    rollNo=sharedPreferences.getString("r19","");
+                }
+                else
+                if (position==19)
+                {
+                    rollNo=sharedPreferences.getString("r20","");
+                }
+
+                Date c = Calendar.getInstance().getTime();
+
+                SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+                String formattedDate = df.format(c);
+                attendence="Absent";
+                AttendenceModel attendenceModel=new AttendenceModel(attendence);
+                databaseReference.child("Classes").child(getBundleClassName).
+                        child("Students").child(rollNo).child(formattedDate).setValue(attendenceModel);
+
             }
 
             @Override
             public void cardSwipedRight(int position) {
-                Toast.makeText(getActivity(), "right", Toast.LENGTH_SHORT).show();
+                if (position==0)
+                {
+                    rollNo=sharedPreferences.getString("r1","");
+                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
+                }
+                else
+                if (position==1)
+                {
+                    rollNo=sharedPreferences.getString("r2","");
+                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
+                }
+                else
+                if (position==2)
+                {
+                    rollNo=sharedPreferences.getString("r3","");
+                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
+                }
+                else
+                if (position==3)
+                {
+                    rollNo=sharedPreferences.getString("r4","");
+                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
+                }
+                else
+                if (position==4)
+                {
+                    rollNo=sharedPreferences.getString("r5","");
+                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
+                }
+                else
+                if (position==5)
+                {
+                    rollNo=sharedPreferences.getString("r6","");
+                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
+                }
+                else
+                if (position==6)
+                {
+                    rollNo=sharedPreferences.getString("r7","");
+                }
+                else
+                if (position==7)
+                {
+                    rollNo=sharedPreferences.getString("r8","");
+                }
+                else
+                if (position==8)
+                {
+                    rollNo=sharedPreferences.getString("r9","");
+                }
+                else
+                if (position==9)
+                {
+                    rollNo=sharedPreferences.getString("r10","");
+                }
+                else
+                if (position==10)
+                {
+                    rollNo=sharedPreferences.getString("r11","");
+                }
+                else
+                if (position==11)
+                {
+                    rollNo=sharedPreferences.getString("r12","");
+                }
+                else
+                if (position==12)
+                {rollNo=sharedPreferences.getString("r13","");
+                }
+                else
+                if (position==13)
+                {
+                    rollNo=sharedPreferences.getString("r14","");
+                }
+                else
+                if (position==14)
+                {
+                    rollNo=sharedPreferences.getString("r15","");
+                }
+                else
+                if (position==15)
+                {
+                    rollNo=sharedPreferences.getString("r16","");
+                }
+                else
+                if (position==16)
+                {
+                    rollNo=sharedPreferences.getString("r17","");
+                }
+                else
+                if (position==17)
+                {
+                    rollNo=sharedPreferences.getString("r18","");
+                }
+                else
+                if (position==18)
+                {
+                    rollNo=sharedPreferences.getString("r19","");
+                }
+                else
+                if (position==19)
+                {
+                    rollNo=sharedPreferences.getString("r20","");
+                }
+
+                Date c = Calendar.getInstance().getTime();
+
+                SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+                String formattedDate = df.format(c);
+                attendence="Present";
+                AttendenceModel attendenceModel=new AttendenceModel(attendence);
+                databaseReference.child("Classes").child(getBundleClassName).
+                        child("Students").child(rollNo).child(formattedDate).setValue(attendenceModel);
             }
 
             @Override
@@ -99,12 +334,12 @@ public class StudentFragment extends Fragment {
 
             @Override
             public void cardActionDown() {
-                Toast.makeText(getActivity(), "leave", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
             public void cardActionUp() {
-
+                Toast.makeText(getActivity(), "leave", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -132,7 +367,6 @@ public class StudentFragment extends Fragment {
                         strRollNo=etRollNo.getText().toString();
                         final StudentModel model=new StudentModel(strName,strFatherName,strRollNo,strAge);
                         databaseReference.child("Classes").child(getBundleClassName).child("Students").child(strRollNo).setValue(model);
-
                     }
                 });
                 AlertDialog alertDialog = dialogBuilder.create();

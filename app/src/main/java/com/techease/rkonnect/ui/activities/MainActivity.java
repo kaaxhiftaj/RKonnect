@@ -5,9 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,9 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.techease.rkonnect.FirebaseClasses.ForceUpdateChecker;
 import com.techease.rkonnect.R;
-import com.techease.rkonnect.ui.fragments.HistoyFragment;
+import com.techease.rkonnect.ui.fragments.HistoryFragment;
 import com.techease.rkonnect.ui.fragments.HomeFragment;
 import com.techease.rkonnect.ui.fragments.ProfileFragment;
 import com.techease.rkonnect.ui.fragments.ReportsFragment;
@@ -97,7 +93,7 @@ public class MainActivity extends AppCompatActivity
             // Handle the camera action
             fragment = new HomeFragment();
         } else if (id == R.id.nav_history) {
-            fragment = new HistoyFragment();
+            fragment = new HistoryFragment();
         } else if (id == R.id.nav_reports) {
             fragment = new ReportsFragment();
 
