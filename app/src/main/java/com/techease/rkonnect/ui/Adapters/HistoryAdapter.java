@@ -44,13 +44,13 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        HistoryModel model=models.get(position);
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+      final  HistoryModel model=models.get(position);
       //  holder.tvStatus.setText(model.getStatus());
         holder.tvRollNo.setText(model.getName());
         holder.tvStudentName.setText(model.getFatherName());
         holder.tvClassName.setText(model.getRollNo());
-        holder.editor.putString("roll",model.getRollNo()).commit();
+
         final String title=model.getAge();
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +58,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 Fragment fragment = new AttendanceRecordFragment();
                 Bundle bundle=new Bundle();
                 bundle.putString("class",title);
+                holder.editor.putString("roll",model.getRollNo()).commit();
                 fragment.setArguments(bundle);
                 Activity activity = (MainActivity) context;
                 activity.getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).addToBackStack("abc").commit();

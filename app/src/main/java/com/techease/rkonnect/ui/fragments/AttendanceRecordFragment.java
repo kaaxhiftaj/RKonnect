@@ -43,6 +43,7 @@ public class AttendanceRecordFragment extends Fragment {
         editor = sharedPreferences.edit();
         className=sharedPreferences.getString("class","");
         rollNo=sharedPreferences.getString("roll","");
+        Toast.makeText(getActivity(), className+rollNo, Toast.LENGTH_SHORT).show();
         recyclerView=(RecyclerView)view.findViewById(R.id.rvAttendanceRocord);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         list = new ArrayList<>();
@@ -51,13 +52,12 @@ public class AttendanceRecordFragment extends Fragment {
         mFirebaseDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Toast.makeText(getActivity(), "aya", Toast.LENGTH_SHORT).show();
                 recyclerView.setAdapter(attendanceAdapter);
                 for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
                 {
                     Toast.makeText(getActivity(), String.valueOf(dataSnapshot1), Toast.LENGTH_SHORT).show();
                     AttendanceRecordModel model=dataSnapshot1.getValue(AttendanceRecordModel.class);
-                    Toast.makeText(getActivity(), String.valueOf(model.getAttendence()), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), String.valueOf(model.getStatus()), Toast.LENGTH_SHORT).show();
                     list.add(model);
                 }
 

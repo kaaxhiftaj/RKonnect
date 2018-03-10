@@ -36,8 +36,8 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         AttendanceRecordModel model=models.get(position);
-        holder.tvDate.setText(model.getDate());
-        holder.tvStatus.setText(model.getAttendence());
+        holder.tvDate.setText(model.getStrDate());
+        holder.tvStatus.setText(model.getStatus());
     }
 
     @Override

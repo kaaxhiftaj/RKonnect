@@ -7,17 +7,7 @@ package com.techease.rkonnect.ui.Models;
 public class AttendenceModel {
 
     private String attendence;
-
-    public String getDate() {
-        return Date;
-    }
-
-    public void setDate(String date) {
-        Date = date;
-    }
-
-    private String Date;
-
+    private String strDate;
 
 
     public AttendenceModel()
@@ -28,8 +18,22 @@ public class AttendenceModel {
 
     {
         this.attendence=b;
-        this.Date=c;
+        this.strDate=c;
     }
+
+
+    public String getDate() {
+        return strDate;
+    }
+
+    public void setDate(String strDate)
+    {
+        strDate = strDate;
+    }
+
+
+
+
 
 
     public String getAttendence() {

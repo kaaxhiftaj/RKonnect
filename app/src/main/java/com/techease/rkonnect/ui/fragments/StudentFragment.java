@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.techease.rkonnect.R;
 import com.techease.rkonnect.ui.Adapters.SwipeStackAdapter;
+import com.techease.rkonnect.ui.Models.AttendanceRecordModel;
 import com.techease.rkonnect.ui.Models.AttendenceModel;
 import com.techease.rkonnect.ui.Models.ClassModel;
 import com.techease.rkonnect.ui.Models.StudentModel;
@@ -204,9 +205,9 @@ public class StudentFragment extends Fragment {
                 SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
                 String formattedDate = df.format(c);
                 attendence="Absent";
-                AttendenceModel attendenceModel=new AttendenceModel(attendence,formattedDate);
+                AttendanceRecordModel attendenceModel=new AttendanceRecordModel(attendence,formattedDate);
                 databaseReference.child("Classes").child(getBundleClassName).
-                        child("Students").child(rollNo).child(formattedDate).setValue(attendenceModel);
+                        child("Students").child(rollNo).child("Attendence").setValue(attendenceModel);
 
             }
 
@@ -322,7 +323,7 @@ public class StudentFragment extends Fragment {
                 SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
                 String formattedDate = df.format(c);
                 attendence="Present";
-                AttendenceModel attendenceModel=new AttendenceModel(attendence,formattedDate);
+                AttendanceRecordModel attendenceModel=new AttendanceRecordModel(attendence,formattedDate);
                 databaseReference.child("Classes").child(getBundleClassName).
                         child("Students").child(rollNo).child("Attendence").setValue(attendenceModel);
             }

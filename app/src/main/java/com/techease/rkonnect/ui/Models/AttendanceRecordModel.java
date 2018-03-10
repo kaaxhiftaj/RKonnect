@@ -5,34 +5,32 @@ package com.techease.rkonnect.ui.Models;
  */
 
 public class AttendanceRecordModel {
-    private  String date;
-    private String attendence;
+    private  String strDate;
+    private String status;
 
     public AttendanceRecordModel()
     {
 
     }
-    public AttendanceRecordModel(String attendence,String date)
+    public AttendanceRecordModel(String status,String strDate)
     {
-        this.attendence=attendence;
-        this.date=date;
+        this.status=status;
+        this.strDate=strDate;
     }
 
-    public String getDate() {
-        return date;
+    public String getStatus() {
+        return status;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public String getAttendence() {
-        return attendence;
+    public String getStrDate() {
+        return strDate;
     }
 
-    public void setAttendence(String attendence) {
-        this.attendence = attendence;
+    public void setStrDate(String strDate) {
+        this.strDate = strDate;
     }
-
-
 }

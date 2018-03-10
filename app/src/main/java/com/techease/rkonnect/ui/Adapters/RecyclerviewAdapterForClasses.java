@@ -50,16 +50,17 @@ public class RecyclerviewAdapterForClasses extends RecyclerView.Adapter<Recycler
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        ClassModel cModel = classModels.get(position);
+        final ClassModel cModel = classModels.get(position);
         holder.tvClassTitle.setText(cModel.getClassTitle());
         final String title=cModel.getClassTitle();
+
        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                Fragment fragment = new StudentFragment();
                Bundle bundle=new Bundle();
                bundle.putString("class",title);
-               holder.editor.putString("class",title).commit();
+               holder.editor.putString("class",cModel.getClassTitle()).commit();
                fragment.setArguments(bundle);
                Activity activity = (MainActivity) context;
                activity.getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).addToBackStack("abc").commit();
