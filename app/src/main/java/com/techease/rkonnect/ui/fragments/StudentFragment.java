@@ -3,7 +3,6 @@ package com.techease.rkonnect.ui.fragments;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.app.Fragment;
@@ -11,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -25,8 +23,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.techease.rkonnect.R;
 import com.techease.rkonnect.ui.Adapters.SwipeStackAdapter;
 import com.techease.rkonnect.ui.Models.AttendanceRecordModel;
-import com.techease.rkonnect.ui.Models.AttendenceModel;
-import com.techease.rkonnect.ui.Models.ClassModel;
 import com.techease.rkonnect.ui.Models.StudentModel;
 import com.techease.rkonnect.utils.Configuration;
 
@@ -34,9 +30,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
-
-import link.fls.swipestack.SwipeStack;
 
 
 public class StudentFragment extends Fragment {
@@ -207,7 +200,7 @@ public class StudentFragment extends Fragment {
                 attendence="Absent";
                 AttendanceRecordModel attendenceModel=new AttendanceRecordModel(attendence,formattedDate);
                 databaseReference.child("Classes").child(getBundleClassName).
-                        child("Students").child(rollNo).child("Attendence").setValue(attendenceModel);
+                        child("Students").child(rollNo).child(formattedDate).setValue(attendenceModel);
 
             }
 
@@ -319,13 +312,12 @@ public class StudentFragment extends Fragment {
                 }
 
                 Date c = Calendar.getInstance().getTime();
-
                 SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
                 String formattedDate = df.format(c);
                 attendence="Present";
                 AttendanceRecordModel attendenceModel=new AttendanceRecordModel(attendence,formattedDate);
                 databaseReference.child("Classes").child(getBundleClassName).
-                        child("Students").child(rollNo).child("Attendence").setValue(attendenceModel);
+                        child("Students").child(rollNo).child(formattedDate).setValue(attendenceModel);
             }
 
             @Override

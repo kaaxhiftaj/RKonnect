@@ -53,15 +53,16 @@ public class AttendanceRecordFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 recyclerView.setAdapter(attendanceAdapter);
-                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
-                {
-                    Toast.makeText(getActivity(), String.valueOf(dataSnapshot1), Toast.LENGTH_SHORT).show();
-                    AttendanceRecordModel model=dataSnapshot1.getValue(AttendanceRecordModel.class);
+            //    for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
+            //    {
+                 //   Toast.makeText(getActivity(), String.valueOf(dataSnapshot1), Toast.LENGTH_SHORT).show();
+                    AttendanceRecordModel model=dataSnapshot.getValue(AttendanceRecordModel.class);
                     Toast.makeText(getActivity(), String.valueOf(model.getStatus()), Toast.LENGTH_SHORT).show();
                     list.add(model);
                 }
+//
 
-            }
+        //    }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {

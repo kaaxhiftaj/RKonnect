@@ -26,7 +26,10 @@ import com.techease.rkonnect.ui.Models.HistoryModel;
 import com.techease.rkonnect.ui.Models.StudentModel;
 import com.techease.rkonnect.utils.AlertsUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class StudentHistory extends Fragment {
@@ -61,11 +64,31 @@ public class StudentHistory extends Fragment {
                 recyclerView.setAdapter(adapter);
 
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    HistoryModel model = dataSnapshot1.getValue(HistoryModel.class);
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
+                    HistoryModel model = new HistoryModel();
+//                    if (alertDialog != null)
+//                        alertDialog.dismiss();
+//                    list.add(model.getName());
+
+                    Date c = Calendar.getInstance().getTime();
+                    SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+                    String formattedDate = df.format(c);
+
+                    String age = dataSnapshot1.child("age").getValue(String.class);
+                    String name = dataSnapshot1.child("name").getValue(String.class);
+                    String rollno = dataSnapshot1.child("rollNo").getValue(String.class);
+                    String fatherName = dataSnapshot1.child("fatherName").getValue(String.class);
+                    String status = dataSnapshot1.child(formattedDate).child("status").getValue(String.class);
+                    model.setAge(age);
+                    model.setName(name);
+                    model.setFatherName(fatherName);
+                    model.setAge(age);
+                    model.setAttendence(status);
                     list.add(model);
+
                 }
+
+                adapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -75,25 +98,25 @@ public class StudentHistory extends Fragment {
         });
 
 
-
-        mFirebaseDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                recyclerView.setAdapter(adapter);
-
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    HistoryModel model = dataSnapshot1.getValue(HistoryModel.class);
-                    if (alertDialog != null)
-                        alertDialog.dismiss();
-                    list.add(model);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+//
+//        mFirebaseDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                recyclerView.setAdapter(adapter);
+//
+//                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+//                    HistoryModel model = dataSnapshot1.getValue(HistoryModel.class);
+//                    if (alertDialog != null)
+//                        alertDialog.dismiss();
+//                    list.add(model);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
 
 
         return view;

@@ -50,20 +50,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         holder.tvRollNo.setText(model.getName());
         holder.tvStudentName.setText(model.getFatherName());
         holder.tvClassName.setText(model.getRollNo());
-
+        holder.tvStatus.setText(model.getAttendence());
         final String title=model.getAge();
-        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new AttendanceRecordFragment();
-                Bundle bundle=new Bundle();
-                bundle.putString("class",title);
-                holder.editor.putString("roll",model.getRollNo()).commit();
-                fragment.setArguments(bundle);
-                Activity activity = (MainActivity) context;
-                activity.getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).addToBackStack("abc").commit();
-            }
-        });
+
     }
 
     @Override
@@ -85,7 +74,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             tvClassName=(TextView)itemView.findViewById(R.id.tvClass);
             tvRollNo=(TextView)itemView.findViewById(R.id.tvR_No);
             relativeLayout=(RelativeLayout)itemView.findViewById(R.id.relativelayout);
-      //      tvStatus=(TextView)itemView.findViewById(R.id.tvStatus);
+            tvStatus=(TextView)itemView.findViewById(R.id.tvStatus);
 
 
         }
