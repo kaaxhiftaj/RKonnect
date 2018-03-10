@@ -8,6 +8,15 @@ public class AttendenceModel {
 
     private String attendence;
 
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
+
+    private String Date;
 
 
 
@@ -15,9 +24,11 @@ public class AttendenceModel {
     {
 
     }
-    public AttendenceModel(String b)
+    public AttendenceModel(String b,String c)
+
     {
         this.attendence=b;
+        this.Date=c;
     }
 
 

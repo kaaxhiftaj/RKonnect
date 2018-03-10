@@ -204,7 +204,7 @@ public class StudentFragment extends Fragment {
                 SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
                 String formattedDate = df.format(c);
                 attendence="Absent";
-                AttendenceModel attendenceModel=new AttendenceModel(attendence);
+                AttendenceModel attendenceModel=new AttendenceModel(attendence,formattedDate);
                 databaseReference.child("Classes").child(getBundleClassName).
                         child("Students").child(rollNo).child(formattedDate).setValue(attendenceModel);
 
@@ -322,9 +322,9 @@ public class StudentFragment extends Fragment {
                 SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
                 String formattedDate = df.format(c);
                 attendence="Present";
-                AttendenceModel attendenceModel=new AttendenceModel(attendence);
+                AttendenceModel attendenceModel=new AttendenceModel(attendence,formattedDate);
                 databaseReference.child("Classes").child(getBundleClassName).
-                        child("Students").child(rollNo).child(formattedDate).setValue(attendenceModel);
+                        child("Students").child(rollNo).child("Attendence").setValue(attendenceModel);
             }
 
             @Override

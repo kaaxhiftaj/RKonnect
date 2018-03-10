@@ -3,6 +3,7 @@ package com.techease.rkonnect.ui.Adapters;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,7 @@ import com.techease.rkonnect.R;
 import com.techease.rkonnect.ui.Models.ClassModel;
 import com.techease.rkonnect.ui.activities.MainActivity;
 import com.techease.rkonnect.ui.fragments.StudentFragment;
+import com.techease.rkonnect.utils.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +49,7 @@ public class RecyclerviewAdapterForClasses extends RecyclerView.Adapter<Recycler
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         ClassModel cModel = classModels.get(position);
         holder.tvClassTitle.setText(cModel.getClassTitle());
         final String title=cModel.getClassTitle();
@@ -57,6 +59,7 @@ public class RecyclerviewAdapterForClasses extends RecyclerView.Adapter<Recycler
                Fragment fragment = new StudentFragment();
                Bundle bundle=new Bundle();
                bundle.putString("class",title);
+               holder.editor.putString("class",title).commit();
                fragment.setArguments(bundle);
                Activity activity = (MainActivity) context;
                activity.getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).addToBackStack("abc").commit();
@@ -71,12 +74,17 @@ public class RecyclerviewAdapterForClasses extends RecyclerView.Adapter<Recycler
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvClassTitle,tvNumberOfStudents;
+        SharedPreferences sharedPreferences;
+        SharedPreferences.Editor editor;
+
         LinearLayout linearLayout;
         public ViewHolder(View itemView) {
             super(itemView);
 
             tvClassTitle=(TextView)itemView.findViewById(R.id.tvClassName);
             linearLayout=(LinearLayout) itemView.findViewById(R.id.linearLayout);
+            sharedPreferences = context.getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
+            editor = sharedPreferences.edit();
         }
     }
 }
