@@ -21,6 +21,7 @@ import com.techease.rkonnect.R;
 import com.techease.rkonnect.ui.Adapters.HistoryAdapter;
 import com.techease.rkonnect.ui.Adapters.HistoryClassesAdapter;
 import com.techease.rkonnect.ui.Adapters.SwipeStackAdapter;
+import com.techease.rkonnect.ui.Models.ClassModel;
 import com.techease.rkonnect.ui.Models.HistoryModel;
 import com.techease.rkonnect.ui.Models.StudentModel;
 import com.techease.rkonnect.utils.AlertsUtils;
@@ -30,13 +31,14 @@ import java.util.ArrayList;
 
 public class StudentHistory extends Fragment {
 
-    RecyclerView rvStudentList;
-    ArrayList<HistoryModel> models;
+    RecyclerView recyclerView;
+    ArrayList<HistoryModel> list;
     HistoryAdapter adapter;
     FirebaseAuth mAuth;
     private DatabaseReference mFirebaseDatabase;
     android.support.v7.app.AlertDialog alertDialog;
     String className;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,33 +46,47 @@ public class StudentHistory extends Fragment {
         View view= inflater.inflate(R.layout.fragment_student_history, container, false);
 
         className=getArguments().getString("class");
-        rvStudentList=(RecyclerView)view.findViewById(R.id.rvStudentHistory);
-        rvStudentList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        models = new ArrayList<>();
-        adapter = new HistoryAdapter(getActivity(),models);
+        recyclerView=(RecyclerView)view.findViewById(R.id.rvStudentHistory);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        list = new ArrayList<>();
+        adapter = new HistoryAdapter(getActivity(),list);
         if (alertDialog == null)
             alertDialog = AlertsUtils.createProgressDialog(getActivity());
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance().getReference().child("Classes").child(className).child("Students");
-        mFirebaseDatabase.addValueEventListener(new ValueEventListener() {
+
+        mFirebaseDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                recyclerView.setAdapter(adapter);
 
-                rvStudentList.setAdapter(adapter);
-                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
-                {
-
-                    HistoryModel stdModel1=dataSnapshot1.getValue(HistoryModel.class);
-                    // models.add(stdModel1);
-                    stdModel1.setClass_Name("abc");
-                    stdModel1.setRoll_No("12321");
-                    stdModel1.setStudentName("kashif");
-                    models.add(stdModel1);
-                    Toast.makeText(getActivity(), String.valueOf(stdModel1.getRoll_No()), Toast.LENGTH_SHORT).show();
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    HistoryModel model = dataSnapshot1.getValue(HistoryModel.class);
+                    if (alertDialog != null)
+                        alertDialog.dismiss();
+                    list.add(model);
                 }
-//                adapter=new HistoryAdapter(getActivity(),models);
-//                rvStudentList.setAdapter(adapter);
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+        mFirebaseDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                recyclerView.setAdapter(adapter);
+
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    HistoryModel model = dataSnapshot1.getValue(HistoryModel.class);
+                    if (alertDialog != null)
+                        alertDialog.dismiss();
+                    list.add(model);
+                }
             }
 
             @Override

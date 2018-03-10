@@ -48,6 +48,7 @@ public class HistoryFragment extends Fragment {
             alertDialog = AlertsUtils.createProgressDialog(getActivity());
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance().getReference().child("Classes");
+
         mFirebaseDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

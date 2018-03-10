@@ -42,9 +42,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         HistoryModel model=models.get(position);
       //  holder.tvStatus.setText(model.getStatus());
-        holder.tvRollNo.setText(model.getRoll_No());
-        holder.tvStudentName.setText(model.getStudentName());
-        holder.tvClassName.setText(model.getClass_Name());
+        holder.tvRollNo.setText(model.getName());
+        holder.tvStudentName.setText(model.getFatherName());
+        holder.tvClassName.setText(model.getAge());
     }
 
     @Override
@@ -60,7 +60,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             tvStudentName=(TextView)itemView.findViewById(R.id.tvName);
             tvClassName=(TextView)itemView.findViewById(R.id.tvClass);
             tvRollNo=(TextView)itemView.findViewById(R.id.tvR_No);
-            tvStatus=(TextView)itemView.findViewById(R.id.tvStatus);
+      //      tvStatus=(TextView)itemView.findViewById(R.id.tvStatus);
 
 
         }
