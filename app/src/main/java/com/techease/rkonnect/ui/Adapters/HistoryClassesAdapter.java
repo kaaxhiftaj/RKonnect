@@ -15,6 +15,7 @@ import com.techease.rkonnect.R;
 import com.techease.rkonnect.ui.Models.ClassModel;
 import com.techease.rkonnect.ui.activities.MainActivity;
 import com.techease.rkonnect.ui.fragments.StudentFragment;
+import com.techease.rkonnect.ui.fragments.StudentHistory;
 
 import java.util.ArrayList;
 
@@ -49,7 +50,7 @@ public class HistoryClassesAdapter  extends RecyclerView.Adapter<HistoryClassesA
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new StudentFragment();
+                Fragment fragment = new StudentHistory();
                 Bundle bundle=new Bundle();
                 bundle.putString("class",title);
                 fragment.setArguments(bundle);

@@ -9,17 +9,17 @@ public class HistoryModel {
     private String StudentName;
     private String Roll_No;
     private String class_Name;
-    private String Attendance_Status;
+   // private String attendence;
     public HistoryModel()
     {
 
     }
-    public HistoryModel(String name,String roll,String class_no,String status)
+    public HistoryModel(String name,String roll,String class_no)
     {
         this.StudentName=name;
         this.Roll_No=roll;
         this.class_Name=class_no;
-        this.Attendance_Status=status;
+       // this.attendence=status;
     }
     public String getStudentName() {
         return StudentName;
@@ -43,13 +43,13 @@ public class HistoryModel {
         Roll_No = roll_No;
     }
 
-    public String getStatus() {
-        return Attendance_Status;
-    }
-
-    public void setStatus(String status) {
-        Attendance_Status = status;
-    }
+//    public String getStatus() {
+//        return attendence;
+//    }
+//
+//    public void setStatus(String status) {
+//        attendence = status;
+//    }
 
 
 }
