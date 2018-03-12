@@ -1,4 +1,4 @@
-package com.techease.rkonnect.ui.fragments;
+package com.techease.rkonnect.ui.fragments.Teacher;
 
 import android.content.Context;
 import android.net.Uri;
@@ -11,15 +11,15 @@ import android.view.ViewGroup;
 import com.techease.rkonnect.R;
 
 
-public class ProfileFragment extends Fragment {
+public class ReportsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_profile, container, false);
+        View  v= inflater.inflate(R.layout.fragment_reports, container, false);
 
-        return v;
+
+        return  v;
     }
-
 }

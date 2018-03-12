@@ -1,25 +1,16 @@
 package com.techease.rkonnect.ui.Adapters;
 
-import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.techease.rkonnect.R;
 import com.techease.rkonnect.ui.Models.HistoryModel;
-import com.techease.rkonnect.ui.activities.MainActivity;
-import com.techease.rkonnect.ui.fragments.AttendanceRecordFragment;
-import com.techease.rkonnect.ui.fragments.StudentFragment;
-import com.techease.rkonnect.ui.fragments.StudentHistory;
 import com.techease.rkonnect.utils.Configuration;
 
 import java.util.ArrayList;

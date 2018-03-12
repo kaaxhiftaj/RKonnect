@@ -5,19 +5,32 @@ package com.techease.rkonnect.ui.Models;
  */
 
 public class StudentModel {
-    private String Name,FatherName,RollNo,Age;
+    private String Name;
+    private String FatherName;
+    private String RollNo;
+    private String Age;
+    private String CNIC;
 
     public StudentModel()
     {
 
     }
-    public StudentModel(String name,String fatherName,String rollNo,String age)
+    public StudentModel(String name,String fatherName,String rollNo,String age,String cnic)
     {
         this.Age=age;
         this.FatherName=fatherName;
         this.RollNo=rollNo;
         this.Name=name;
+        this.CNIC=cnic;
     }
+    public String getCNIC() {
+        return CNIC;
+    }
+
+    public void setCNIC(String CNIC) {
+        this.CNIC = CNIC;
+    }
+
     public String getName() {
         return Name;
     }

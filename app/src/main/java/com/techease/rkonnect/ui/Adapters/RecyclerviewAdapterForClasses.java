@@ -5,23 +5,21 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.techease.rkonnect.R;
 import com.techease.rkonnect.ui.Models.ClassModel;
 import com.techease.rkonnect.ui.activities.MainActivity;
-import com.techease.rkonnect.ui.fragments.StudentFragment;
+import com.techease.rkonnect.ui.fragments.Parent.ParentHomeFragment;
+import com.techease.rkonnect.ui.fragments.Teacher.StudentFragment;
 import com.techease.rkonnect.utils.Configuration;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Adamnoor on 08-Mar-18.
@@ -57,13 +55,15 @@ public class RecyclerviewAdapterForClasses extends RecyclerView.Adapter<Recycler
        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Fragment fragment = new StudentFragment();
-               Bundle bundle=new Bundle();
-               bundle.putString("class",title);
-               holder.editor.putString("class",cModel.getClassTitle()).commit();
-               fragment.setArguments(bundle);
-               Activity activity = (MainActivity) context;
-               activity.getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).addToBackStack("abc").commit();
+
+                   Fragment fragment = new StudentFragment();
+                   Bundle bundle=new Bundle();
+                   bundle.putString("class",title);
+                   holder.editor.putString("class",cModel.getClassTitle()).commit();
+                   fragment.setArguments(bundle);
+                   Activity activity = (MainActivity) context;
+                   activity.getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).addToBackStack("abc").commit();
+
            }
        });
     }
@@ -77,7 +77,7 @@ public class RecyclerviewAdapterForClasses extends RecyclerView.Adapter<Recycler
         TextView tvClassTitle,tvNumberOfStudents;
         SharedPreferences sharedPreferences;
         SharedPreferences.Editor editor;
-
+        String token;
         LinearLayout linearLayout;
         public ViewHolder(View itemView) {
             super(itemView);

@@ -1,4 +1,4 @@
-package com.techease.rkonnect.ui.fragments;
+package com.techease.rkonnect.ui.fragments.Teacher;
 
 import android.content.Context;
 import android.net.Uri;
@@ -65,9 +65,6 @@ public class StudentHistory extends Fragment {
 
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     HistoryModel model = new HistoryModel();
-//                    if (alertDialog != null)
-//                        alertDialog.dismiss();
-//                    list.add(model.getName());
 
                     Date c = Calendar.getInstance().getTime();
                     SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
@@ -96,28 +93,6 @@ public class StudentHistory extends Fragment {
 
             }
         });
-
-
-//
-//        mFirebaseDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                recyclerView.setAdapter(adapter);
-//
-//                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-//                    HistoryModel model = dataSnapshot1.getValue(HistoryModel.class);
-//                    if (alertDialog != null)
-//                        alertDialog.dismiss();
-//                    list.add(model);
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-
 
         return view;
     }

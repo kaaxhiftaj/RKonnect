@@ -1,22 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#fff"
-    tools:context="com.techease.rkonnect.ui.fragments.Teacher.HistoryFragment">
+    tools:context="com.techease.rkonnect.ui.fragments.Parent.ParentHomeActivity">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="30sp"
-        android:text="List of Students"
-        android:layout_gravity="center"
-        android:layout_marginLeft="1sp"
-        android:layout_marginRight="1sp"
+        android:text="List of childs"
+        android:gravity="center"
         android:background="@drawable/edittext_bg2"
-        android:gravity="center"/>
+        />
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10sp"
-        android:id="@+id/rvHistoy"></android.support.v7.widget.RecyclerView>
+        android:id="@+id/rvParentHome"
+        android:layout_marginTop="5sp"
+        android:padding="10sp"></android.support.v7.widget.RecyclerView>
 </LinearLayout>

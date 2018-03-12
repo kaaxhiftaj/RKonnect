@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/image_bg"
-    tools:context="com.techease.rkonnect.ui.fragments.Login">
+    tools:context="com.techease.rkonnect.ui.fragments.Teacher.LoginTeacherFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

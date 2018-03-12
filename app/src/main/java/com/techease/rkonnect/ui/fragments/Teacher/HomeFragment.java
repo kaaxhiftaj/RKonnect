@@ -1,4 +1,4 @@
-package com.techease.rkonnect.ui.fragments;
+package com.techease.rkonnect.ui.fragments.Teacher;
 
 import android.app.AlertDialog;
 import android.content.Context;

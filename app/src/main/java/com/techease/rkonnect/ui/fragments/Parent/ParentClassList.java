@@ -1,8 +1,9 @@
-package com.techease.rkonnect.ui.fragments;
+package com.techease.rkonnect.ui.fragments.Parent;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,7 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.techease.rkonnect.R;
-import com.techease.rkonnect.ui.Adapters.HistoryClassesAdapter;
+import com.techease.rkonnect.ui.Adapters.ClassListAdapterParent;
 import com.techease.rkonnect.ui.Adapters.RecyclerviewAdapterForClasses;
 import com.techease.rkonnect.ui.Models.ClassModel;
 import com.techease.rkonnect.utils.AlertsUtils;
@@ -25,11 +26,12 @@ import com.techease.rkonnect.utils.AlertsUtils;
 import java.util.ArrayList;
 
 
-public class HistoryFragment extends Fragment {
+public class ParentClassList extends Fragment {
 
-    RecyclerView recyclerView;
+    RecyclerView rvClasses;
+    String strClassTitle,strInstituteName;
     ArrayList<ClassModel> list;
-    HistoryClassesAdapter adapter;
+    ClassListAdapterParent adapter;
     FirebaseAuth mAuth;
     private DatabaseReference mFirebaseDatabase;
     android.support.v7.app.AlertDialog alertDialog;
@@ -38,21 +40,22 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_history, container, false);
+        View view= inflater.inflate(R.layout.fragment_parent_class_list, container, false);
 
-        recyclerView=(RecyclerView)view.findViewById(R.id.rvHistoy);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        rvClasses=(RecyclerView)view.findViewById(R.id.rvClassListParent);
+        rvClasses.setLayoutManager(new LinearLayoutManager(getActivity()));
         list = new ArrayList<>();
-        adapter = new HistoryClassesAdapter(getActivity(),list);
+        adapter = new ClassListAdapterParent(getActivity(),list);
+
         if (alertDialog == null)
             alertDialog = AlertsUtils.createProgressDialog(getActivity());
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance().getReference().child("Classes");
-
         mFirebaseDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                recyclerView.setAdapter(adapter);
+                rvClasses.setAdapter(adapter);
 
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     ClassModel model = dataSnapshot1.getValue(ClassModel.class);

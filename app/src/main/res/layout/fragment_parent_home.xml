@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    tools:context="com.techease.rkonnect.ui.fragments.Parent.ParentHomeFragment">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30sp"
+        android:text="List of childs"
+        android:gravity="center"
+        android:background="@drawable/edittext_bg2"
+        />
+ <android.support.v7.widget.RecyclerView
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:id="@+id/rvParentHome"
+     android:layout_marginTop="5sp"
+     android:padding="10sp"></android.support.v7.widget.RecyclerView>
+</LinearLayout>

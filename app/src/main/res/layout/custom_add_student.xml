@@ -43,6 +43,19 @@
         android:paddingLeft="10sp"
         />
     <EditText
+        android:id="@+id/etFatherCNICAddingChild"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40sp"
+        android:layout_marginRight="40sp"
+        android:layout_marginTop="20sp"
+        android:background="@drawable/edittext_bg2"
+        android:hint="Father CNIC"
+        android:textColorHint="@color/colorPrimary"
+        android:textColor="@color/colorPrimary"
+        android:paddingLeft="10sp"
+        />
+    <EditText
         android:id="@+id/etAge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

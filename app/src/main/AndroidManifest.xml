@@ -26,6 +26,18 @@
         <activity
             android:name=".ui.activities.MainActivity"
             android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activities.FullscreenActivityParent"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_fullscreen_parent"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".ui.fragments.Parent.ParentHomeActivity"
+            android:theme="@style/FullScreen"></activity>
+        <activity
+            android:name=".ui.activities.Main2Activity"
+            android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

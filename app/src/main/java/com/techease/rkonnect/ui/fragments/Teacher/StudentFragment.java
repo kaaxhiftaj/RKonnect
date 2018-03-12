@@ -1,4 +1,4 @@
-package com.techease.rkonnect.ui.fragments;
+package com.techease.rkonnect.ui.fragments.Teacher;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -35,7 +35,7 @@ import java.util.Date;
 public class StudentFragment extends Fragment {
     SwipeDeck cardStack;
     FloatingActionButton fab;
-    String strName,strFatherName,strRollNo,strAge,getBundleClassName;
+    String strName,strFatherName,strRollNo,strAge,getBundleClassName,strCNIC;
     DatabaseReference databaseReference,getDatabaseReference;
     ArrayList<StudentModel> modelArrayList;
     String date,attendence,rollNo;
@@ -349,6 +349,7 @@ public class StudentFragment extends Fragment {
                 final EditText etFatherName=(EditText)dialogView.findViewById(R.id.etFatherName);
                 final EditText etAge=(EditText)dialogView.findViewById(R.id.etAge);
                 final EditText etRollNo=(EditText)dialogView.findViewById(R.id.etRollNo);
+                final EditText etFatherCnic=(EditText)dialogView.findViewById(R.id.etFatherCNICAddingChild);
                 Button btnAdd=(Button)dialogView.findViewById(R.id.btnAdd);
 
                 btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -358,7 +359,8 @@ public class StudentFragment extends Fragment {
                         strName=etName.getText().toString();
                         strFatherName=etFatherName.getText().toString();
                         strRollNo=etRollNo.getText().toString();
-                        final StudentModel model=new StudentModel(strName,strFatherName,strRollNo,strAge);
+                        strCNIC=etFatherCnic.getText().toString();
+                        final StudentModel model=new StudentModel(strName,strFatherName,strRollNo,strAge,strCNIC);
                         databaseReference.child("Classes").child(getBundleClassName).child("Students").child(strRollNo).setValue(model);
                     }
                 });
