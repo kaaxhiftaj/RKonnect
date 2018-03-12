@@ -28,26 +28,27 @@ public class SplashActivity extends AppCompatActivity {
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token","");
 
-        if (token.equals("login")) {
+        if (token.equals("teacher")) {
             Window window = this.getWindow();
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
-            startActivity(new Intent(SplashActivity.this, FullScreenActivity.class));
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
             finish();
-        } else
+        }
+        else
             if (token.equals("parent"))
             {
                 Window window = this.getWindow();
                 window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
-                startActivity(new Intent(SplashActivity.this, FullScreenActivity.class));
+                startActivity(new Intent(SplashActivity.this, Main2Activity.class));
                 finish();
-        }
+            }
         else
             {
-                startActivity(new Intent(SplashActivity.this,Main2Activity.class));
+                startActivity(new Intent(SplashActivity.this,FullScreenActivity.class));
             }
 
 

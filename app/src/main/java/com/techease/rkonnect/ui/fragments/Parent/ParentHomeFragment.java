@@ -32,8 +32,10 @@ public class ParentHomeFragment extends Fragment {
     ParentHomeAdapter adapter;
     FirebaseAuth mAuth;
     String CNIC,className;
+    String classTitle,insti;
     private DatabaseReference mFirebaseDatabase;
     private DatabaseReference mFirebaseDatabaseForCnic;
+    private DatabaseReference mFirebaseDatabaseForClassAndInsti;
     android.support.v7.app.AlertDialog alertDialog;
 
     @Override
@@ -64,7 +66,22 @@ public class ParentHomeFragment extends Fragment {
 
             }
         });
+        mFirebaseDatabaseForClassAndInsti=FirebaseDatabase.getInstance().getReference().child("Classes").child(className);
+        mFirebaseDatabaseForClassAndInsti.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
+                {
+                     classTitle=dataSnapshot1.child("classTitle").getValue(String.class);
+                     insti=dataSnapshot1.child("instituteName").getValue(String.class);
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         if (alertDialog == null)
             alertDialog = AlertsUtils.createProgressDialog(getActivity());
         mAuth = FirebaseAuth.getInstance();
@@ -79,9 +96,7 @@ public class ParentHomeFragment extends Fragment {
                     String name = dataSnapshot1.child("name").getValue(String.class);
                     String rollNo = dataSnapshot1.child("rollNo").getValue(String.class);
                     String cnic= dataSnapshot1.child("cnic").getValue(String.class);
-                    String classTitle=dataSnapshot1.child("classTitle").getValue(String.class);
-                    String insti=dataSnapshot1.child("instituteName").getValue(String.class);
-                    Toast.makeText(getActivity(), cnic, Toast.LENGTH_LONG).show();
+
 
                     if (cnic.equals(CNIC))
                     {
