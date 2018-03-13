@@ -6,10 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.techease.rkonnect.R;
+import com.techease.rkonnect.ui.Models.AttendanceRecordModel;
 import com.techease.rkonnect.ui.Models.HistoryModel;
 import com.techease.rkonnect.utils.Configuration;
 
@@ -43,6 +47,14 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         holder.tvClassName.setText(model.getRollNo());
         holder.tvStatus.setText(model.getAttendence());
         final String title=model.getAge();
+//        holder.btnUpdate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                AttendanceRecordModel attendenceModel=new AttendanceRecordModel(attendence,formattedDate);
+//                holder.databaseReference.child("Classes").child(getBundleClassName).
+//                        child("Students").child(rollNo).child(formattedDate).setValue(attendenceModel);
+//            }
+//        });
 
     }
 
@@ -53,7 +65,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvStudentName,tvClassName,tvRollNo,tvStatus;
+        Button btnUpdate;
         RelativeLayout relativeLayout;
+        DatabaseReference databaseReference;
         SharedPreferences sharedPreferences;
         SharedPreferences.Editor editor;
         public ViewHolder(View itemView) {
@@ -66,6 +80,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             tvRollNo=(TextView)itemView.findViewById(R.id.tvR_No);
             relativeLayout=(RelativeLayout)itemView.findViewById(R.id.relativelayout);
             tvStatus=(TextView)itemView.findViewById(R.id.tvStatus);
+           // btnUpdate=(Button)itemView.findViewById(R.id.btnUpdate);
+            databaseReference= FirebaseDatabase.getInstance().getReference();
 
 
         }

@@ -25,7 +25,7 @@ android {
         }
         applicationVariants.all { variant ->
             variant.outputs.all { output ->
-                String apkName = "ClubArena";
+                String apkName = "Rkonnect";
                 if (variant.buildType.name == "release") {
                     apkName += " 1.0.0.apk";
                 } else if (variant.buildType.name == "debug") {

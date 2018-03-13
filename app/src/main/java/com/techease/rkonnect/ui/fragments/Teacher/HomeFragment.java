@@ -85,10 +85,10 @@ public class HomeFragment extends Fragment {
                 LayoutInflater inflater = getActivity().getLayoutInflater();
                 View dialogView = inflater.inflate(R.layout.custom_alert_dialog, null);
                 dialogBuilder.setView(dialogView);
-
                 final EditText etClassTitle = (EditText) dialogView.findViewById(R.id.etClassTitle);
                 final EditText etInstituteName = (EditText) dialogView.findViewById(R.id.etInstituteNameAddClass);
                 Button btnSave=(Button)dialogView.findViewById(R.id.btnSave);
+                final AlertDialog alertDialog2 = dialogBuilder.create();
                 btnSave.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -97,11 +97,10 @@ public class HomeFragment extends Fragment {
                         ClassModel reviewLocation = new ClassModel(strClassTitle,strInstituteName);
                         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
                         database.child("Classes").child(strClassTitle).setValue(reviewLocation);
-                        alertDialog.dismiss();
+                        alertDialog2.cancel();
                     }
                 });
 
-                AlertDialog alertDialog = dialogBuilder.create();
                 alertDialog.show();
             }
         });

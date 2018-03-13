@@ -91,37 +91,32 @@ public class StudentFragment extends Fragment {
                 if (position==0)
                 {
                     rollNo=sharedPreferences.getString("r1","");
-                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
                 }
                 else
                 if (position==1)
                 {
                     rollNo=sharedPreferences.getString("r2","");
-                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
                 }
                 else
                 if (position==2)
                 {
                     rollNo=sharedPreferences.getString("r3","");
-                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
                 }
                 else
                 if (position==3)
                 {
                     rollNo=sharedPreferences.getString("r4","");
-                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
                 }
                 else
                 if (position==4)
                 {
                     rollNo=sharedPreferences.getString("r5","");
-                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
                 }
                 else
                 if (position==5)
                 {
                     rollNo=sharedPreferences.getString("r6","");
-                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
+
                 }
                 else
                 if (position==6)
@@ -209,37 +204,31 @@ public class StudentFragment extends Fragment {
                 if (position==0)
                 {
                     rollNo=sharedPreferences.getString("r1","");
-                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
                 }
                 else
                 if (position==1)
                 {
                     rollNo=sharedPreferences.getString("r2","");
-                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
                 }
                 else
                 if (position==2)
                 {
                     rollNo=sharedPreferences.getString("r3","");
-                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
                 }
                 else
                 if (position==3)
                 {
                     rollNo=sharedPreferences.getString("r4","");
-                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
                 }
                 else
                 if (position==4)
                 {
                     rollNo=sharedPreferences.getString("r5","");
-                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
                 }
                 else
                 if (position==5)
                 {
                     rollNo=sharedPreferences.getString("r6","");
-                    Toast.makeText(getActivity(), rollNo, Toast.LENGTH_SHORT).show();
                 }
                 else
                 if (position==6)
@@ -333,7 +322,6 @@ public class StudentFragment extends Fragment {
 
             @Override
             public void cardActionUp() {
-                Toast.makeText(getActivity(), "leave", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -343,8 +331,9 @@ public class StudentFragment extends Fragment {
             public void onClick(View view) {
                 // Click action
                 final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
+                dialogBuilder.setCancelable(true);
                 LayoutInflater inflater = getActivity().getLayoutInflater();
-                View dialogView = inflater.inflate(R.layout.custom_add_student, null);
+                final View dialogView = inflater.inflate(R.layout.custom_add_student, null);
                 dialogBuilder.setView(dialogView);
                 final EditText etName=(EditText)dialogView.findViewById(R.id.etName);
                 final EditText etFatherName=(EditText)dialogView.findViewById(R.id.etFatherName);
@@ -352,7 +341,7 @@ public class StudentFragment extends Fragment {
                 final EditText etRollNo=(EditText)dialogView.findViewById(R.id.etRollNo);
                 final EditText etFatherCnic=(EditText)dialogView.findViewById(R.id.etFatherCNICAddingChild);
                 Button btnAdd=(Button)dialogView.findViewById(R.id.btnAdd);
-
+                final AlertDialog alertDialog = dialogBuilder.create();
                 btnAdd.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -363,9 +352,11 @@ public class StudentFragment extends Fragment {
                         strCNIC=etFatherCnic.getText().toString();
                         final StudentModel model=new StudentModel(strName,strFatherName,strRollNo,strAge,strCNIC);
                         databaseReference.child("Classes").child(getBundleClassName).child("Students").child(strRollNo).setValue(model);
+                        alertDialog.cancel();
+                       // alertDialog.dismiss();
                     }
                 });
-                AlertDialog alertDialog = dialogBuilder.create();
+
                 alertDialog.show();
             }
         });
