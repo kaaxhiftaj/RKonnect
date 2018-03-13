@@ -74,7 +74,7 @@ public class StudentFragment extends Fragment {
                 }
 
                 final SwipeStackAdapter adapter = new SwipeStackAdapter(modelArrayList, getActivity());
-                cardStack.setAdapter(adapter);;
+                cardStack.setAdapter(adapter);
 
             }
 
@@ -322,7 +322,8 @@ public class StudentFragment extends Fragment {
 
             @Override
             public void cardsDepleted() {
-                Log.i("MainActivity", "no more cards");
+
+                Log.i("TeacherDashboard", "no more cards");
             }
 
             @Override

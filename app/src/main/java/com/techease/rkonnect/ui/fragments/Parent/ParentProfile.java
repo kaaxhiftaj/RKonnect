@@ -1,4 +1,4 @@
-package com.techease.rkonnect.ui.fragments.Teacher;
+package com.techease.rkonnect.ui.fragments.Parent;
 
 import android.content.Context;
 import android.net.Uri;
@@ -16,34 +16,38 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.techease.rkonnect.R;
 
+public class ParentProfile extends Fragment {
 
-public class ProfileFragment extends Fragment {
-
-    TextView tvInsti,tvEmail;
+    TextView tvName,tvCNIC,tvEmail;
     private DatabaseReference mFirebaseDatabase;
-    String insti;
+    String name;
+    String cnic;
     String email;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        View view= inflater.inflate(R.layout.fragment_parent_profile, container, false);
 
-        tvEmail=(TextView)view.findViewById(R.id.tvTeacherEmail);
-        tvInsti=(TextView)view.findViewById(R.id.tvTeacherInsti);
+        tvName=(TextView)view.findViewById(R.id.tvParentName);
+        tvEmail=(TextView)view.findViewById(R.id.tvParentEmail);
+        tvCNIC=(TextView)view.findViewById(R.id.tvParentCNIC);
 
-        mFirebaseDatabase= FirebaseDatabase.getInstance().getReference().child("user").child("Teachers");
+        mFirebaseDatabase= FirebaseDatabase.getInstance().getReference().child("user").child("Parents");
         mFirebaseDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
                 {
 
-                    insti=dataSnapshot1.child("instituteName").getValue(String.class);
-                    email=dataSnapshot1.child("email").getValue(String.class);
+                     name=dataSnapshot1.child("name").getValue(String.class);
+                     cnic=dataSnapshot1.child("cnic").getValue(String.class);
+                     email=dataSnapshot1.child("email").getValue(String.class);
                 }
-                tvInsti.setText(insti);
+                tvName.setText(name);
+                tvCNIC.setText(cnic);
                 tvEmail.setText(email);
             }
 
@@ -52,6 +56,9 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+
+
+
         return view;
     }
 

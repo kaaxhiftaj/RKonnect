@@ -5,7 +5,6 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +14,8 @@ import android.widget.TextView;
 
 import com.techease.rkonnect.R;
 import com.techease.rkonnect.ui.Models.ClassModel;
-import com.techease.rkonnect.ui.activities.FullScreenActivity;
-import com.techease.rkonnect.ui.activities.Main2Activity;
-import com.techease.rkonnect.ui.activities.MainActivity;
+import com.techease.rkonnect.ui.activities.ParentDashboard;
 import com.techease.rkonnect.ui.fragments.Parent.ParentHomeFragment;
-import com.techease.rkonnect.ui.fragments.Teacher.StudentFragment;
 import com.techease.rkonnect.utils.Configuration;
 
 import java.util.ArrayList;
@@ -58,9 +54,8 @@ public class ClassListAdapterParent extends RecyclerView.Adapter<ClassListAdapte
                 bundle.putString("class",title);
                 holder.editor.putString("class",cModel.getClassTitle()).commit();
                 fragment.setArguments(bundle);
-                Activity activity = (Main2Activity) context;
+                Activity activity = (ParentDashboard) context;
                 activity.getFragmentManager().beginTransaction().replace(R.id.fragment_main2, fragment).addToBackStack("abc").commit();
-
             }
         });
 

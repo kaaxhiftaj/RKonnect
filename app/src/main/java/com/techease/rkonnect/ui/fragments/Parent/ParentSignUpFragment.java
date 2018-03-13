@@ -22,7 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.techease.rkonnect.R;
 import com.techease.rkonnect.ui.Models.ParentModel;
-import com.techease.rkonnect.ui.activities.MainActivity;
+import com.techease.rkonnect.ui.activities.TeacherDashboard;
 import com.techease.rkonnect.utils.AlertsUtils;
 import com.techease.rkonnect.utils.Configuration;
 
@@ -96,7 +96,7 @@ public class ParentSignUpFragment extends Fragment {
                             ParentModel parentModel = new ParentModel(strName,strEmail,strCnic);
                             DatabaseReference current_user_db=mDatabase.child("Parents").child(userid);
                             current_user_db.setValue(parentModel);
-                            startActivity(new Intent(getActivity(), MainActivity.class));
+                            startActivity(new Intent(getActivity(), TeacherDashboard.class));
 
                         } else {
                             // If sign in fails, display a message to the user.

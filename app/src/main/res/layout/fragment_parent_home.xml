@@ -5,13 +5,48 @@
     android:background="#fff"
     android:orientation="vertical"
     tools:context="com.techease.rkonnect.ui.fragments.Parent.ParentHomeFragment">
-    <TextView
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="30sp"
-        android:text="List of childs"
+        android:layout_gravity="center"
+        android:layout_marginTop="60sp"
         android:gravity="center"
         android:background="@drawable/edittext_bg2"
-        />
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnBackDateParent"
+            android:layout_width="20sp"
+            android:layout_height="20sp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="30sp"
+            android:background="@drawable/back"/>
+        <View
+            android:layout_width="2sp"
+            android:layout_height="match_parent"
+            android:background="#eee"/>
+        <TextView
+            android:id="@+id/tvDateParent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:gravity="center"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"
+            android:layout_gravity="center"/>
+        <View
+            android:layout_width="2sp"
+            android:layout_height="match_parent"
+            android:background="#eee"/>
+        <Button
+            android:id="@+id/btnNextDateParent"
+            android:layout_width="20sp"
+            android:layout_height="20sp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="5sp"
+            android:background="@drawable/next"/>
+    </LinearLayout>
  <android.support.v7.widget.RecyclerView
      android:layout_width="match_parent"
      android:layout_height="match_parent"

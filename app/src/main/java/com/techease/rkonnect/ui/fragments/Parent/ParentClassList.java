@@ -42,7 +42,6 @@ public class ParentClassList extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_parent_class_list, container, false);
 
-
         rvClasses=(RecyclerView)view.findViewById(R.id.rvClassListParent);
         rvClasses.setLayoutManager(new LinearLayoutManager(getActivity()));
         list = new ArrayList<>();

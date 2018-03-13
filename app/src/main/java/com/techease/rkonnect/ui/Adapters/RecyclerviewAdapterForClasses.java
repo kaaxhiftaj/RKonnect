@@ -14,8 +14,7 @@ import android.widget.TextView;
 
 import com.techease.rkonnect.R;
 import com.techease.rkonnect.ui.Models.ClassModel;
-import com.techease.rkonnect.ui.activities.MainActivity;
-import com.techease.rkonnect.ui.fragments.Parent.ParentHomeFragment;
+import com.techease.rkonnect.ui.activities.TeacherDashboard;
 import com.techease.rkonnect.ui.fragments.Teacher.StudentFragment;
 import com.techease.rkonnect.utils.Configuration;
 
@@ -61,7 +60,7 @@ public class RecyclerviewAdapterForClasses extends RecyclerView.Adapter<Recycler
                    bundle.putString("class",title);
                    holder.editor.putString("class",cModel.getClassTitle()).commit();
                    fragment.setArguments(bundle);
-                   Activity activity = (MainActivity) context;
+                   Activity activity = (TeacherDashboard) context;
                    activity.getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).addToBackStack("abc").commit();
 
            }

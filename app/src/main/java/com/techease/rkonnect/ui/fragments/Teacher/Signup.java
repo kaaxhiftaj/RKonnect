@@ -22,7 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.techease.rkonnect.R;
 import com.techease.rkonnect.ui.Models.TeacherModel;
-import com.techease.rkonnect.ui.activities.MainActivity;
+import com.techease.rkonnect.ui.activities.TeacherDashboard;
 import com.techease.rkonnect.utils.AlertsUtils;
 import com.techease.rkonnect.utils.Configuration;
 
@@ -97,7 +97,7 @@ public class Signup extends Fragment {
                             TeacherModel teacherModel = new TeacherModel(strEmail,strInstituteName,userid);
                             DatabaseReference current_user_db=mDatabase.child("Teachers").child(userid);
                             current_user_db.setValue(teacherModel);
-                            startActivity(new Intent(getActivity(), MainActivity.class));
+                            startActivity(new Intent(getActivity(), TeacherDashboard.class));
 
                         } else {
                             // If sign in fails, display a message to the user.

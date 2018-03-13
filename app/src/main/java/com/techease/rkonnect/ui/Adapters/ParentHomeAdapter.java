@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.techease.rkonnect.R;
 import com.techease.rkonnect.ui.Models.ParentHomeModel;
+import com.techease.rkonnect.ui.activities.TeacherDashboard;
 
 import java.util.ArrayList;
 
@@ -40,6 +41,7 @@ public class ParentHomeAdapter extends RecyclerView.Adapter<ParentHomeAdapter.Vi
         holder.tvInsti.setText(model.getInstituteName());
         holder.tvClass.setText(model.getClassTitle());
         holder.tvRollNo.setText(model.getRollNo());
+        holder.tvStatus.setText(model.getStatus());
     }
 
     @Override
@@ -48,13 +50,14 @@ public class ParentHomeAdapter extends RecyclerView.Adapter<ParentHomeAdapter.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName,tvRollNo,tvInsti,tvClass;
+        TextView tvName,tvRollNo,tvInsti,tvClass,tvStatus;
         public ViewHolder(View itemView) {
             super(itemView);
             tvName=(TextView)itemView.findViewById(R.id.tvChildName);
             tvRollNo=(TextView)itemView.findViewById(R.id.tvChildRollNo);
             tvInsti=(TextView)itemView.findViewById(R.id.tvChildInsti);
             tvClass=(TextView)itemView.findViewById(R.id.tvClass);
+            tvStatus=(TextView) itemView.findViewById(R.id.tvChildStatus);
         }
     }
 }

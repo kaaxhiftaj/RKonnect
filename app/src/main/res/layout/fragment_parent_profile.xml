@@ -4,19 +4,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#fff"
-    tools:context="com.techease.rkonnect.ui.fragments.Teacher.ProfileFragment">
+    tools:context="com.techease.rkonnect.ui.fragments.Parent.ParentProfile">
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200sp"
         android:src="@drawable/clas"/>
 
     <TextView
-        android:id="@+id/tvTeacherEmail"
+        android:id="@+id/tvParentName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/edittext_bg2"
         android:layout_marginLeft="20sp"
-        android:text="Email"
+        android:text="Name"
         android:textColor="@color/colorPrimary"
         android:textSize="17sp"
         android:textStyle="bold"
@@ -25,12 +26,12 @@
         android:layout_marginTop="30sp"
         />
     <TextView
-        android:id="@+id/tvTeacherInsti"
+        android:id="@+id/tvParentCNIC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/edittext_bg2"
         android:layout_marginLeft="20sp"
-        android:text="Institute Name"
+        android:text="CNIC"
         android:textColor="@color/colorPrimary"
         android:textSize="17sp"
         android:textStyle="bold"
@@ -38,8 +39,23 @@
         android:layout_marginRight="20sp"
         android:layout_marginTop="20sp"
         />
+    <TextView
+        android:id="@+id/tvParentEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_bg2"
+        android:layout_marginLeft="20sp"
+        android:text="Email"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:layout_marginRight="20sp"
+        android:layout_marginTop="20sp"
+        />
+
     <Button
-        android:id="@+id/btnSaveTeacherProfile"
+        android:id="@+id/btnSaveParentProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40sp"
@@ -50,5 +66,4 @@
         android:textSize="17sp"
         android:textStyle="bold"
         android:text="Save"/>
-
 </LinearLayout>

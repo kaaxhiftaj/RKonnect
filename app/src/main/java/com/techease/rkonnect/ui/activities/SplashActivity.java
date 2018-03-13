@@ -1,6 +1,5 @@
 package com.techease.rkonnect.ui.activities;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -33,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
-            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            startActivity(new Intent(SplashActivity.this, TeacherDashboard.class));
             finish();
         }
         else
@@ -43,7 +42,7 @@ public class SplashActivity extends AppCompatActivity {
                 window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
-                startActivity(new Intent(SplashActivity.this, Main2Activity.class));
+                startActivity(new Intent(SplashActivity.this, ParentDashboard.class));
                 finish();
             }
         else

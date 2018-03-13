@@ -24,7 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.techease.rkonnect.R;
-import com.techease.rkonnect.ui.activities.MainActivity;
+import com.techease.rkonnect.ui.activities.TeacherDashboard;
 import com.techease.rkonnect.utils.AlertsUtils;
 import com.techease.rkonnect.utils.Configuration;
 
@@ -112,10 +112,10 @@ public class LoginTeacherFragment extends Fragment {
                 {
                     String userid = mAuth.getUid();
                     editor.putString("user_id", userid).commit();
-                    editor.putString("token","login").commit();
+                    editor.putString("token","teacher").commit();
                     if (alertDialog != null)
                         alertDialog.dismiss();
-                    startActivity(new Intent(getActivity(), MainActivity.class));
+                    startActivity(new Intent(getActivity(), TeacherDashboard.class));
                 }
             }
 

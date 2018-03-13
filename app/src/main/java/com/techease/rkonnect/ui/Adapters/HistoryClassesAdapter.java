@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.techease.rkonnect.R;
 import com.techease.rkonnect.ui.Models.ClassModel;
-import com.techease.rkonnect.ui.activities.MainActivity;
+import com.techease.rkonnect.ui.activities.TeacherDashboard;
 import com.techease.rkonnect.ui.fragments.Teacher.StudentHistory;
 
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public class HistoryClassesAdapter  extends RecyclerView.Adapter<HistoryClassesA
                 Bundle bundle=new Bundle();
                 bundle.putString("class",title);
                 fragment.setArguments(bundle);
-                Activity activity = (MainActivity) context;
+                Activity activity = (TeacherDashboard) context;
                 activity.getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).addToBackStack("abc").commit();
             }
         });
