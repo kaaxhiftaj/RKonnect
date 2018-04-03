@@ -16,7 +16,7 @@ import android.view.MenuItem;
 
 import com.techease.rkonnect.R;
 import com.techease.rkonnect.ui.fragments.Teacher.HistoryFragment;
-import com.techease.rkonnect.ui.fragments.Teacher.HomeFragment;
+import com.techease.rkonnect.ui.fragments.Teacher.Classes;
 import com.techease.rkonnect.ui.fragments.Teacher.ProfileFragment;
 import com.techease.rkonnect.ui.fragments.Teacher.ReportsFragment;
 import com.techease.rkonnect.utils.Configuration;
@@ -30,18 +30,26 @@ public class TeacherDashboard extends AppCompatActivity
     String club_id;
 
     @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
         sharedPreferences = TeacherDashboard.this.getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
-        fragment = new HomeFragment();
+        fragment = new Classes();
         getFragmentManager().beginTransaction().replace(R.id.fragment_main, fragment).commit();
         setTitle("HOME");
 
@@ -91,7 +99,7 @@ public class TeacherDashboard extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-            fragment = new HomeFragment();
+            fragment = new Classes();
         } else if (id == R.id.nav_history) {
             fragment = new HistoryFragment();
         } else if (id == R.id.nav_reports) {

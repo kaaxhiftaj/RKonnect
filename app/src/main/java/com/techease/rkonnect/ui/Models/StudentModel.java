@@ -10,6 +10,9 @@ public class StudentModel {
     private String RollNo;
     private String Age;
     private String CNIC;
+    public String imageName;
+    public String imageURL;
+
 
     public StudentModel()
     {
@@ -22,6 +25,27 @@ public class StudentModel {
         this.RollNo=rollNo;
         this.Name=name;
         this.CNIC=cnic;
+    }
+    public StudentModel(String name, String url) {
+
+        this.imageName = name;
+        this.imageURL= url;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
     public String getCNIC() {
         return CNIC;

@@ -25,12 +25,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.techease.rkonnect.R;
 import com.techease.rkonnect.ui.Adapters.RecyclerviewAdapterForClasses;
 import com.techease.rkonnect.ui.Models.ClassModel;
+import com.techease.rkonnect.ui.activities.TeacherDashboard;
 import com.techease.rkonnect.utils.AlertsUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class Classes extends Fragment {
 
     RecyclerView rvClasses;
     FloatingActionButton fab;
@@ -45,6 +46,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
+
 
         rvClasses=(RecyclerView)v.findViewById(R.id.rvClasses);
         rvClasses.setLayoutManager(new LinearLayoutManager(getActivity()));

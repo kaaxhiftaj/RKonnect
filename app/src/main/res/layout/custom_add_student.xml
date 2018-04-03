@@ -5,7 +5,13 @@
     android:layout_height="wrap_content"
     android:background="#fff"
     android:orientation="vertical">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,6 +22,13 @@
         android:textStyle="bold"
         android:layout_marginTop="10sp"
         />
+<de.hdodenhof.circleimageview.CircleImageView
+    android:id="@+id/ivStudentImage"
+    android:layout_width="150sp"
+    android:layout_height="150sp"
+    android:src="@drawable/uploadimg"
+    android:layout_marginTop="10sp"
+    android:layout_gravity="center"/>
 <EditText
     android:id="@+id/etName"
     android:layout_width="match_parent"
@@ -91,5 +104,7 @@
         android:textColor="#fff"
         android:layout_marginBottom="10sp"
         android:layout_gravity="center"
-        android:layout_marginTop="50sp"/>
+        android:layout_marginTop="20sp"/>
+</LinearLayout>
+    </ScrollView>
 </LinearLayout>

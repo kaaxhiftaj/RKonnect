@@ -18,12 +18,10 @@ import com.techease.rkonnect.R;
 
 public class ParentProfile extends Fragment {
 
-    TextView tvName,tvCNIC,tvEmail;
-    private DatabaseReference mFirebaseDatabase;
-    String name;
-    String cnic;
-    String email;
 
+    private DatabaseReference mFirebaseDatabase;
+    String name,rollNo,attendanceAverage;
+    String Storage_Path = "All_Image_Uploads/";     
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,9 +29,6 @@ public class ParentProfile extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_parent_profile, container, false);
 
-        tvName=(TextView)view.findViewById(R.id.tvParentName);
-        tvEmail=(TextView)view.findViewById(R.id.tvParentEmail);
-        tvCNIC=(TextView)view.findViewById(R.id.tvParentCNIC);
 
         mFirebaseDatabase= FirebaseDatabase.getInstance().getReference().child("user").child("Parents");
         mFirebaseDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -42,13 +37,8 @@ public class ParentProfile extends Fragment {
                 for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
                 {
 
-                     name=dataSnapshot1.child("name").getValue(String.class);
-                     cnic=dataSnapshot1.child("cnic").getValue(String.class);
-                     email=dataSnapshot1.child("email").getValue(String.class);
                 }
-                tvName.setText(name);
-                tvCNIC.setText(cnic);
-                tvEmail.setText(email);
+
             }
 
             @Override
