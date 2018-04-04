@@ -1,11 +1,13 @@
 package com.techease.rkonnect.ui.fragments.Parent;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,7 @@ import com.techease.rkonnect.ui.Adapters.ParentHomeAdapter;
 import com.techease.rkonnect.ui.Adapters.RecyclerviewAdapterForClasses;
 import com.techease.rkonnect.ui.Models.ParentHomeModel;
 import com.techease.rkonnect.utils.AlertsUtils;
+import com.techease.rkonnect.utils.Configuration;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -46,6 +49,8 @@ public class ParentHomeFragment extends Fragment {
     Calendar c;
     Button btnNext,btnBack;
     TextView tvDate;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,6 +58,7 @@ public class ParentHomeFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_parent_home, container, false);
 
         className=getArguments().getString("class","");
+
         rvParentHome=(RecyclerView)view.findViewById(R.id.rvParentHome);
         btnNext=(Button)view.findViewById(R.id.btnNextDateParent);
         btnBack=(Button)view.findViewById(R.id.btnBackDateParent);
@@ -66,9 +72,8 @@ public class ParentHomeFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
                 {
-
                     CNIC=dataSnapshot1.child("cnic").getValue(String.class);
-                  //  Toast.makeText(getActivity(), CNIC, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), CNIC, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -101,6 +106,7 @@ public class ParentHomeFragment extends Fragment {
         c = Calendar.getInstance();
         df = new SimpleDateFormat("dd-MMM-yyyy");
         formattedDate = df.format(c.getTime());
+
         tvDate.setText(formattedDate);
         getResult(formattedDate);
 
@@ -122,8 +128,6 @@ public class ParentHomeFragment extends Fragment {
                 getResult(formattedDate);
             }
         });
-
-
         return view;
     }
 
@@ -138,11 +142,11 @@ public class ParentHomeFragment extends Fragment {
                 {
                     ParentHomeModel model=new ParentHomeModel();
                     String name = dataSnapshot1.child("name").getValue(String.class);
+                    Log.d("name", name);
                     String rollNo = dataSnapshot1.child("rollNo").getValue(String.class);
                     String cnic= dataSnapshot1.child("cnic").getValue(String.class);
+                    Log.d("zmaNic", cnic);
                     String status = dataSnapshot1.child(formattedDate).child("status").getValue(String.class);
-
-
 
                     if (cnic.equals(CNIC))
                     {

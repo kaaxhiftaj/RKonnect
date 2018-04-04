@@ -37,7 +37,7 @@ public class Classes extends Fragment {
     FloatingActionButton fab;
     String strClassTitle,strInstituteName;
     ArrayList<ClassModel> list;
-   RecyclerviewAdapterForClasses adapter;
+    RecyclerviewAdapterForClasses adapter;
     FirebaseAuth mAuth;
     private DatabaseReference mFirebaseDatabase;
     android.support.v7.app.AlertDialog alertDialog;
@@ -46,7 +46,6 @@ public class Classes extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-
 
         rvClasses=(RecyclerView)v.findViewById(R.id.rvClasses);
         rvClasses.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -76,14 +75,12 @@ public class Classes extends Fragment {
 
             }
         });
-
-
         fab = (FloatingActionButton)v.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                // Click action
+            public void onClick(View v) {
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
+                dialogBuilder.setCancelable(true);
                 LayoutInflater inflater = getActivity().getLayoutInflater();
                 View dialogView = inflater.inflate(R.layout.custom_alert_dialog, null);
                 dialogBuilder.setView(dialogView);
@@ -102,8 +99,7 @@ public class Classes extends Fragment {
                         alertDialog2.cancel();
                     }
                 });
-
-                alertDialog.show();
+                alertDialog2.show();
             }
         });
         return  v ;

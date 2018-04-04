@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -116,6 +117,7 @@ public class ParentSingInFragment extends Fragment {
                     String userid = mAuth.getUid();
                     editor.putString("user_id", userid).commit();
                     editor.putString("token","parent").commit();
+                    Log.d("myUserId", userId);
                     if (alertDialog != null)
                         alertDialog.dismiss();
                    startActivity(new Intent(getActivity(), ParentDashboard.class));
